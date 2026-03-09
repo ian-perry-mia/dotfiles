@@ -1,114 +1,8 @@
 # ~/.config/starship.toml
 palette = "dusk"
 
-[palettes.dusk]
-bg0 = "#1E2A3A"
-bg1 = "#243448"
-bg2 = "#2A3F58"
-blue_bright = "#5BA3F5"
-blue_mid = "#4080D0"
-blue_muted = "#2E6AAD"
-cyan = "#5BC8D8"
-lavender = "#8AAEDD"
-muted = "#5A7A9A"
-text = "#D0E4F8"
-red = "#D05070"
-orange = "#E08050"
-
 format = """
-[\u256D](fg:blue_bright)[\ue0b6](fg:bg1)$username\
-$hostname\
-$localip\
-$shlvl\
-$singularity\
-$kubernetes\
-$directory\
-$vcsh\
-$fossil_branch\
-$fossil_metrics\
-$git_branch\
-$git_commit\
-$git_state\
-$git_metrics\
-$git_status\
-$hg_branch\
-$hg_state\
-$pijul_channel\
-$docker_context\
-$package\
-$c\
-$cmake\
-$cobol\
-$daml\
-$dart\
-$deno\
-$dotnet\
-$elixir\
-$elm\
-$erlang\
-$fennel\
-$fortran\
-$gleam\
-$golang\
-$guix_shell\
-$haskell\
-$haxe\
-$helm\
-$java\
-$julia\
-$kotlin\
-$gradle\
-$lua\
-$nim\
-$nodejs\
-$ocaml\
-$opa\
-$perl\
-$php\
-$pulumi\
-$purescript\
-$python\
-$quarto\
-$raku\
-$rlang\
-$red\
-$ruby\
-$rust\
-$scala\
-$solidity\
-$swift\
-$terraform\
-$typst\
-$vlang\
-$vagrant\
-$zig\
-$buf\
-$nix_shell\
-$conda\
-$meson\
-$spack\
-$memory_usage\
-$aws\
-$gcloud\
-$openstack\
-$azure\
-$nats\
-$direnv\
-$env_var\
-$mise\
-$crystal\
-$custom\
-$sudo\
-$cmd_duration\
-$line_break\
-$jobs\
-$battery\
-$time\
-$status\
-$os\
-$container\
-$netns\
-$shell\
+[\u256D](fg:blue_bright)[\ue0b6](fg:bg1)$all\
 [\u2570](fg:blue_bright)$character""" 
 right_format = "$time"
 continuation_prompt = '[--](bright-black) '
@@ -165,3 +59,17 @@ min_time = 2000
 [character]
 success_symbol = "[❯](bold fg:purple)"
 error_symbol = "[❯](bold fg:red)"
+
+[palettes.dusk]
+bg0 = "#1E2A3A"
+bg1 = "#243448"
+bg2 = "#2A3F58"
+blue_bright = "#5BA3F5"
+blue_mid = "#4080D0"
+blue_muted = "#2E6AAD"
+cyan = "#5BC8D8"
+lavender = "#8AAEDD"
+muted = "#5A7A9A"
+text = "#D0E4F8"
+red = "#D05070"
+orange = "#E08050"
