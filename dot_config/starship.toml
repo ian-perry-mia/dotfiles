@@ -1,0 +1,72 @@
+# ~/.config/starship.toml
+
+right_format = "$time"
+continuation_prompt = '[--](bright-black) '
+palette = "dusk"
+
+[palettes.dusk]
+bg0 = "#1E2A3A"
+bg1 = "#243448"
+bg2 = "#2A3F58"
+blue_bright = "#5BA3F5"
+blue_mid = "#4080D0"
+blue_muted = "#2E6AAD"
+cyan = "#5BC8D8"
+lavender = "#8AAEDD"
+muted = "#5A7A9A"
+text = "#D0E4F8"
+red = "#D05070"
+orange = "#E08050"
+
+[time]
+disabled = false
+format = '[$time]($style) '
+time_format = "%H:%M:%S"
+style = "dimmed white"
+
+[username]
+show_always = false
+format = "[\u256d](fg:blue_bright)[\ue0b6](fg:bg1)[$user ]($style)[\ue0b0](fg:bg1 bg:bg2)"
+style_user = 'fg:purple bg:bg1'
+aliases = {
+    "ian.perry@avionics411.com" = ""
+}
+[hostname]
+ssh_only = false
+format = "[ $hostname ]($style)[\ue0b0](fg:bg2 bg:bg0)"
+style = "fg:blue bg:bg2"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "fg:text bg:bg0"
+format = "[ $path ]($style)[\ue0b0](fg:bg0 bg:bg1)"
+
+[git_branch]
+style = "fg:blue_bright bg:bg1"
+format = "[ $symbol$branch ]($style)"
+symbol = " "
+
+[git_status]
+style = "fg:blue_bright bg:bg1"
+format = "[ $all_status$ahead_behind ]($style)[\ue0b0](fg:bg1)"
+conflicted = "[⚡](fg:red bg:bg1)"
+ahead = "[⇡${count}](fg:cyan bg:bg1)"
+behind = "[⇣${count}](fg:lavender bg:bg1)"
+diverged = "[⇕⇡${ahead_count}⇣${behind_count}](fg:red bg:bg1)"
+untracked = "[?${count}](fg:muted bg:bg1)"
+stashed = "[≡${count}](fg:blue_mid bg:bg1)"
+modified = "[!${count}](fg:orange bg:bg1)"
+staged = "[+${count}](fg:cyan bg:bg1)"
+renamed = "[»${count}](fg:lavender bg:bg1)"
+deleted = "[✘${count}](fg:red bg:bg1)"
+up_to_date = "[✔](fg:cyan bg:bg1)"  # heavier check
+
+[cmd_duration]
+style = "fg:muted"
+format = "[ 󱦟 $duration ]($style)"
+min_time = 2000
+
+[character]
+success_symbol = "[\u2570](fg:blue_bright)[❯](bold fg:purple)"
+error_symbol = "[\u2570](fg:blue_bright)[❯](bold fg:red)"
