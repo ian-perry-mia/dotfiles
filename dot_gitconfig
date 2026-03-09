@@ -1,0 +1,7 @@
+[safe]
+	directory = /opt/snipe-it
+	directory = /opt/snipe_it
+	directory = *
+[user]
+	email = ian.perry@avionics411.com
+	name = Ian Perry
