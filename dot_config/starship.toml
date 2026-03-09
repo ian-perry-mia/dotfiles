@@ -16,8 +16,8 @@ red = "#D05070"
 orange = "#E08050"
 
 format = """
-[╭](fg:blue_bright)[\ue0b6](fg:bg1)$all
-[╰](fg:blue_bright)$character""" 
+[\u256D](fg:blue_bright)[\ue0b6](fg:bg1)$all
+[\u2570](fg:blue_bright)$character""" 
 right_format = "$time"
 continuation_prompt = '[--](bright-black) '
 
