@@ -1,7 +1,4 @@
 # ~/.config/starship.toml
-
-right_format = "$time"
-continuation_prompt = '[--](bright-black) '
 palette = "dusk"
 
 [palettes.dusk]
@@ -18,6 +15,12 @@ text = "#D0E4F8"
 red = "#D05070"
 orange = "#E08050"
 
+format = """
+[╭](fg:blue_bright)$all
+[╰](fg:blue_bright)$character""" 
+right_format = "$time"
+continuation_prompt = '[--](bright-black) '
+
 [time]
 disabled = false
 format = '[$time]($style) '
@@ -25,7 +28,7 @@ time_format = "%H:%M:%S"
 style = "dimmed white"
 
 [username]
-show_always = true
+show_always = false
 format = "[\u256d](fg:blue_bright)[\ue0b6](fg:bg1)[$user ]($style)[\ue0b0](fg:bg1 bg:bg2)"
 style_user = 'fg:purple bg:bg1'
 aliases = {
