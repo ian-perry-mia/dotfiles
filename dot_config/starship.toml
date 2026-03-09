@@ -71,5 +71,5 @@ format = "[ 󱦟 $duration ]($style)"
 min_time = 2000
 
 [character]
-success_symbol = "[\u2570](fg:blue_bright)[❯](bold fg:purple)"
-error_symbol = "[\u2570](fg:blue_bright)[❯](bold fg:red)"
+success_symbol = "[❯](bold fg:purple)"
+error_symbol = "[❯](bold fg:red)"
