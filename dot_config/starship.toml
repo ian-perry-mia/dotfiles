@@ -26,7 +26,7 @@ style = "dimmed white"
 
 [username]
 show_always = false
-format = "[- \u256d](fg:blue_bright)[\ue0b6](fg:bg1)[$user ]($style)[\ue0b0](fg:bg1 bg:bg2)"
+format = "[\u256d](fg:blue_bright)[\ue0b6](fg:bg1)arst[$user ]($style)[\ue0b0](fg:bg1 bg:bg2)"
 style_user = 'fg:purple bg:bg1'
 aliases = {
     "ian.perry@avionics411.com" = ""
