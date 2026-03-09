@@ -16,7 +16,7 @@ red = "#D05070"
 orange = "#E08050"
 
 format = """
-[╭](fg:blue_bright)$all
+[╭](fg:blue_bright)[\ue0b6](fg:bg1)$all
 [╰](fg:blue_bright)$character""" 
 right_format = "$time"
 continuation_prompt = '[--](bright-black) '
@@ -29,7 +29,7 @@ style = "dimmed white"
 
 [username]
 show_always = false
-format = "[\u256d](fg:blue_bright)[\ue0b6](fg:bg1)[$user ]($style)[\ue0b0](fg:bg1 bg:bg2)"
+format = "[$user ]($style)[\ue0b0](fg:bg1 bg:bg2)"
 style_user = 'fg:purple bg:bg1'
 aliases = {
     "ian.perry@avionics411.com" = ""
