@@ -10,7 +10,7 @@ if status is-interactive
     starship init fish | source
 
     if test (uname) = "Darwin"
-        set -x SSH_AUTH_SOCK "/Users/$(whoami)/.bitwarden-ssh-agent.sock"
+        set -x SSH_AUTH_SOCK "/Users/$(whoami)/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
     end
     
 end
