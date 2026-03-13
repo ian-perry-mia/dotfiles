@@ -21,3 +21,7 @@ abbr -a !! --position anywhere --function last_history_item
 function last_history_item
     echo $history[1]
 end
+
+function __tabby_working_directory_reporting --on-event fish_prompt
+    echo -en "\e]1337;CurrentDir=$PWD\x7"
+end
