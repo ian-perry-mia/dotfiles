@@ -1,0 +1,14 @@
+---
+default_provider: azure
+
+providers:
+  - alias: azure microsoft
+    issuer: https://login.microsoftonline.com/9c718c21-d249-408d-991f-c8e763618057/v2.0
+    client_id: 7520dfbd-94a3-40eb-8e8a-b16f5fc1d34a
+    scopes: openid profile email offline_access
+    prompt: none
+    access_type: offline
+    redirect_uris:
+      - http://localhost:3000/login-callback
+      - http://localhost:10001/login-callback
+      - http://localhost:11110/login-callback
