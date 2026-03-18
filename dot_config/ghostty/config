@@ -1,0 +1,15 @@
+language = en
+theme = TokyoNight
+cursor-style = block
+shell-integration = fish
+mouse-hide-while-typing = true
+font-family = 'CaskaydiaCove NFM'
+font-size = 16
+font-feature = calt
+font-feature = zero
+font-feature = ss02
+font-feature = ss20
+macos-titlebar-style = tabs
+background-opacity = 0.7
+background-blur = macos-glass-regular
+font-thicken = true
