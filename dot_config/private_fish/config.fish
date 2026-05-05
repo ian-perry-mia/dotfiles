@@ -14,10 +14,6 @@ if status is-interactive
     end
 
     set -x NVM_DIR "$HOME/.nvm"
-    if [ -s "$NVM_DIR/nvm.sh" ]
-        \. "$NVM_DIR/nvm.sh"
-    end
-    
 end
 
 # Replicate bash !!
