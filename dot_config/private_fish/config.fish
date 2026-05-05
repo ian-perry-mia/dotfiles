@@ -12,6 +12,11 @@ if status is-interactive
     if test (uname) = "Darwin"
         set -x SSH_AUTH_SOCK "/Users/$(whoami)/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
     end
+
+    set -x NVM_DIR "$HOME/.nvm"
+    if [ -s "$NVM_DIR/nvm.sh" ]
+        \. "$NVM_DIR/nvm.sh"
+    end
     
 end
 
