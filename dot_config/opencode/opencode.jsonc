@@ -1,0 +1,47 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  "model": "general",
+
+  "provider": {
+    "hq-gpu": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "MillInt LLM",
+      "options": {
+        "baseURL": "https://llm.hq.avionics411.com/v1",
+        "apiKey": "{file:~/.config/opencode/millint-ai.key}"
+      },
+      "models": {
+        "general": {
+          "name": "Gemma 4 26B A4B",
+          "limit": {
+            "context": 262144,
+            "output": 32768
+          }
+        },
+        "reasoning": {
+          "name": "Nemotron 3 Super 120B A12B",
+          "limit": {
+            "context": 262144,
+            "output": 32768
+          }
+        },
+        "coding": {
+          "name": "Muse Glimmer 30B",
+          "limit": {
+            "context": 131072,
+            "output": 16384
+          }
+        }
+      }
+    }
+  },
+  "agent": {
+    "gemma": {
+      "mode": "primary",
+      "model": "millint-ai/general",
+      "steps": 50,
+      "prompt": "{file:./prompts/gemma-agent.txt}"
+    }
+  }
+}
