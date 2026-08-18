@@ -1,19 +1,33 @@
 if status is-interactive
-    # If SSH'd in, use zellij
-    if [ -n "$SSH_CLIENT" ]; or [ -n "$SSH_TTY" ]
-        set -gx ZELLIJ_AUTO_EXIT    "true"
-        set -gx ZELLIJ_AUTO_ATTACH  "true"
-        eval (zellij setup --generate-auto-start fish | string collect)
-    end
-    
-    # Enable starship
+    # Starship
     starship init fish | source
 
-    if test (uname) = "Darwin"
-        set -x SSH_AUTH_SOCK "/Users/$(whoami)/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
+    set -gx ZELLIJ_AUTO_EXIT true
+    set -gx ZELLIJ_AUTO_ATTACH true
+
+    if not set -q ZELLIJ
+        if test (uname) = Darwin
+            zellij attach --create local
+
+            if test "$ZELLIJ_AUTO_EXIT" = true
+                exit
+            end
+        else
+            eval (zellij setup --generate-auto-start fish | string collect)
+        end
     end
-    
+
+    set -gx GIT_SSH_COMMAND "ssh -i $HOME/.ssh/id_ed25519.github -o IdentitiesOnly=yes"
+
+    # Bitwarden SSH agent
+    if test (uname) = Darwin
+        set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
+    else
+        set -gx SSH_AUTH_SOCK "$HOME/.bitwarden-ssh-agent.sock"
+    end
 end
+
+
 
 # Replicate bash !!
 abbr -a !! --position anywhere --function last_history_item
@@ -22,6 +36,5 @@ function last_history_item
     echo $history[1]
 end
 
-function __tabby_working_directory_reporting --on-event fish_prompt
-    echo -en "\e]1337;CurrentDir=$PWD\x7"
-end
+# User-local binaries
+fish_add_path "$HOME/.local/bin"
