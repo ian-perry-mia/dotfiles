@@ -279,9 +279,16 @@ load_plugins {
 web_client {
     font "monospace"
 }
+
+{{- if eq .chezmoi.os "darwin }}
+serialize_pane_viewport false
+{{- else }}
 serialize_pane_viewport true
 scrollback_lines_to_serialize 10000
+{{- end}}
+
 show_startup_tips false
+
 {{- if eq .chezmoi.os "darwin" }}
 default_shell "/opt/homebrew/bin/fish"
 {{- else }}
