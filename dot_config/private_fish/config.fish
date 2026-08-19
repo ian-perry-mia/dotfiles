@@ -7,7 +7,7 @@ if status is-interactive
             if not set -q ZELLIJ
                 if set -q SSH_CONNECTION
                     # SSH session
-                    exec zellij attach
+                    exec zellij attach --create
                 else
                     # Local terminal
                     zellij attach --create local
