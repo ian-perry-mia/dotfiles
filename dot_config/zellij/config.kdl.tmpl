@@ -282,17 +282,18 @@ web_client {
 
 {{- if eq .chezmoi.os "darwin" }}
 serialize_pane_viewport false
-ui {
-    pane_frames {
-        hide_session_name true
-    }
-}
+session_serialization false
 {{- else }}
 serialize_pane_viewport true
 scrollback_lines_to_serialize 10000
 pane_frames false
 {{- end}}
 
+ui {
+    pane_frames {
+        hide_session_name true
+    }
+}
 show_startup_tips false
 osc8_hyperlinks true
 mouse_click_through true
