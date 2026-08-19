@@ -1,13 +1,19 @@
 if status is-interactive
     starship init fish | source
 
-    function __start_zellij --on-event fish_prompt
-        functions --erase __start_zellij
+        function __start_zellij --on-event fish_prompt
+            functions --erase __start_zellij
 
-        if not set -q ZELLIJ
-            zellij attach --create local
+            if not set -q ZELLIJ
+                if set -q SSH_CONNECTION
+                    # SSH session
+                    exec zellij attach
+                else
+                    # Local terminal
+                    zellij attach --create local
+                end
+            end
         end
-    end
 
     set -gx GIT_SSH_COMMAND "ssh -i $HOME/.ssh/id_ed25519.github -o IdentitiesOnly=yes"
 
