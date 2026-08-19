@@ -275,6 +275,10 @@ plugins {
 // eg. "file:/path/to/my-plugin.wasm"
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
+    "file:~/.config/zellij/plugins/zjstatus-hints.wasm" {
+        pipe_name "zjstatus_hints"
+        hide_in_base_mode "true"
+    }
 }
 web_client {
     font "monospace"
