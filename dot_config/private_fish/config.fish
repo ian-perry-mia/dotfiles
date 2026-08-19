@@ -1,29 +1,16 @@
 if status is-interactive
-    # Starship
     starship init fish | source
 
-    set -gx ZELLIJ_AUTO_EXIT true
-    set -gx ZELLIJ_AUTO_ATTACH true
+    function __start_zellij --on-event fish_prompt
+        functions --erase __start_zellij
 
-    if not set -q ZELLIJ
-        if test (uname) = Darwin
+        if not set -q ZELLIJ
             zellij attach --create local
-            set zellij_status $status
-            if test $zellij_status -eq 0
-                if test "$ZELLIJ_AUTO_EXIT" = true
-                    exit
-                end
-            else
-                echo "Zelij failed to start; remaining in Fish."
-            end
-        else
-            eval (zellij setup --generate-auto-start fish | string collect)
         end
     end
 
     set -gx GIT_SSH_COMMAND "ssh -i $HOME/.ssh/id_ed25519.github -o IdentitiesOnly=yes"
 
-    # Bitwarden SSH agent
     if test (uname) = Darwin
         set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
     else

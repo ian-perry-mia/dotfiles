@@ -280,15 +280,17 @@ web_client {
     font "monospace"
 }
 
+default_layout "default"
+
 {{- if eq .chezmoi.os "darwin" }}
 serialize_pane_viewport false
 session_serialization false
 {{- else }}
 serialize_pane_viewport true
 scrollback_lines_to_serialize 10000
-pane_frames false
 {{- end}}
 
+pane_frames false
 ui {
     pane_frames {
         hide_session_name true
