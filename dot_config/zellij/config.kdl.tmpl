@@ -282,6 +282,11 @@ web_client {
 
 {{- if eq .chezmoi.os "darwin" }}
 serialize_pane_viewport false
+ui {
+    pane_frames {
+        hide_session_name true
+    }
+}
 {{- else }}
 serialize_pane_viewport true
 scrollback_lines_to_serialize 10000
@@ -289,6 +294,8 @@ pane_frames false
 {{- end}}
 
 show_startup_tips false
+osc8_hyperlinks true
+mouse_click_through true
 
 {{- if eq .chezmoi.os "darwin" }}
 default_shell "/opt/homebrew/bin/fish"
