@@ -8,9 +8,13 @@ if status is-interactive
     if not set -q ZELLIJ
         if test (uname) = Darwin
             zellij attach --create local
-
-            if test "$ZELLIJ_AUTO_EXIT" = true
-                exit
+            set zellij_status $status
+            if test $zellij_status -eq 0
+                if test "$ZELLIJ_AUTO_EXIT" = true
+                    exit
+                end
+            else
+                echo "Zelij failed to start; remaining in Fish."
             end
         else
             eval (zellij setup --generate-auto-start fish | string collect)
