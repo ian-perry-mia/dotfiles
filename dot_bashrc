@@ -5,7 +5,7 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
+    *i*) command -v fish >/dev/null 2>&1 && exec fish;;
       *) return;;
 esac
 
