@@ -16,10 +16,6 @@ if status is-interactive
         end
 
     set -gx GIT_SSH_COMMAND "ssh -i $HOME/.ssh/id_ed25519.github -o IdentitiesOnly=yes"
-
-    if test (uname) = Darwin
-        set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
-    end
 end
 
 
