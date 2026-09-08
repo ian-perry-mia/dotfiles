@@ -19,8 +19,6 @@ if status is-interactive
 
     if test (uname) = Darwin
         set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
-    else
-        set -gx SSH_AUTH_SOCK "$HOME/.bitwarden-ssh-agent.sock"
     end
 end
 
