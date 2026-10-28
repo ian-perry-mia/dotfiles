@@ -119,6 +119,16 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export ZELLIJ_AUTO_ATTACH=true
-eval "$(zellij setup --generate-auto-start bash)"
+# zellij auto-attach to session "local" (only reached when fish isn't installed;
+# see the exec at the top). Same gating as config.fish.
+if [[ -z $ZELLIJ && -z $CLAUDECODE && -t 0 && -t 1 && $TERM != dumb ]] \
+   && [[ $TERM_PROGRAM != claude-desktop && $TERM_PROGRAM != vscode ]] \
+   && { [[ -z $SSH_CONNECTION ]] || [[ -n $SSH_TTY ]]; } \
+   && command -v zellij >/dev/null 2>&1; then
+    if [[ -n $SSH_CONNECTION ]]; then
+        exec zellij attach --create local
+    else
+        zellij attach --create local
+    fi
+fi
 eval "$(starship init bash)"

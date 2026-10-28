@@ -1,25 +1,26 @@
 if status is-interactive
     starship init fish | source
 
-        function __start_zellij --on-event fish_prompt
-            functions --erase __start_zellij
+    # zellij auto-attach to session "local", only for a human at a real terminal.
+    function __start_zellij --on-event fish_prompt
+        functions --erase __start_zellij
 
-            # Don't attach shells started by Claude (desktop app or Claude Code); a second
-            # client on the shared "local" session shrinks it to the smaller window.
-            if test "$TERM_PROGRAM" = claude-desktop; or set -q CLAUDECODE
-                return
-            end
+        set -q ZELLIJ; and return                       # already inside zellij
+        isatty stdin; and isatty stdout; or return      # no tty: scp/rsync/ansible/pipes
+        test "$TERM" = dumb; and return
+        # Claude (desktop app / Claude Code) and editor terminals; a second client
+        # on the shared "local" session also shrinks it to the smaller window.
+        set -q CLAUDECODE; and return
+        contains -- "$TERM_PROGRAM" claude-desktop vscode; and return
+        type -q zellij; or return
 
-            if not set -q ZELLIJ
-                if set -q SSH_CONNECTION
-                    # SSH session
-                    exec zellij attach --create
-                else
-                    # Local terminal
-                    zellij attach --create local
-                end
-            end
+        if set -q SSH_CONNECTION
+            set -q SSH_TTY; or return                   # ssh without a pty (`ssh host cmd`)
+            exec zellij attach --create local
+        else
+            zellij attach --create local
         end
+    end
 
     set -gx GIT_SSH_COMMAND "ssh -i $HOME/.ssh/id_ed25519.github -o IdentitiesOnly=yes"
 end
